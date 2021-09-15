@@ -19,6 +19,7 @@ import {
 	FaUnderline,
 } from "react-icons/fa";
 import Image from "./extensions/image";
+import Embed from "./extensions/embed/index.js";
 
 const Tiptap = () => {
 	const editor = useEditor({
@@ -27,6 +28,7 @@ const Tiptap = () => {
 			Link,
 			Extensions,
 			Image,
+			Embed,
 			Commands.configure({
 				suggestion: {
 					items: (query) => {
@@ -162,12 +164,7 @@ const Tiptap = () => {
 								icon: "Em",
 								subtitle: "Embed",
 								command: ({ editor, range }) => {
-									editor
-										.chain()
-										.focus()
-										.deleteRange(range)
-										.setNode("heading", { level: 1 })
-										.run();
+									editor.chain().focus().deleteRange(range).setEmbedUrl().run();
 								},
 							},
 							{
@@ -245,8 +242,10 @@ const Tiptap = () => {
 		],
 		content: `
 		<h1>TipTap</h1>
-    `,
+		`,
 	});
+
+	console.log({ json: editor?.getJSON(), html: editor?.getHTML() });
 
 	return (
 		<>
