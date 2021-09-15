@@ -1,4 +1,5 @@
 import Tiptap from "./Tiptap";
+import "antd/dist/antd.css";
 
 const App = () => {
 	return (
