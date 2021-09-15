@@ -8,7 +8,7 @@ const MenuBar = ({ editor }) => {
 	return (
 		<>
 			<button
-				onClick={() => editor.chain().focus().setUppy().run()}
+				onClick={() => editor.chain().focus().setImage().run()}
 				className={editor.isActive("bold") ? "is-active" : ""}
 			>
 				image
